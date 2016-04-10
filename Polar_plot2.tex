@@ -1,0 +1,18 @@
+\documentclass[margin=10]{standalone}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+%\pgfplotsset{compat=newest} % 1.10
+
+\begin{document}
+%\ifx\relax % An original version...
+\begin{tikzpicture}
+\begin{polaraxis}[
+  title=\texttt{Station 1 (quantity [units])}, colorbar,
+  ymax=.15, grid=major, xmin=30, yticklabels={0,,0.1,,0.2},
+  %xlabel={\texttt{quantity (units)}$\rightarrow$},
+  ]
+
+\end{polaraxis}
+\end{tikzpicture}
+
+\end{document}

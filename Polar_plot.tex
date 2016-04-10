@@ -1,0 +1,30 @@
+\documentclass[10pt,border=10pt]{standalone}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+\pgfplotsset{compat=1.12}    
+\begin{document}
+\begin{tikzpicture}
+
+\begin{polaraxis}[
+   xticklabel=$\pgfmathprintnumber{\tick}^\circ$,
+   xtick={0,30,...,330},
+   ytick={-40,-30,...,0},
+   ymin=-40, ymax=0,
+   y coord trafo/.code=\pgfmathparse{#1+40},
+   rotate=-90,
+   y coord inv trafo/.code=\pgfmathparse{#1-40},
+   x dir=reverse,
+   xticklabel style={anchor=-\tick-90},
+   yticklabel style={anchor=east, xshift=-4.55cm},
+   y axis line style={yshift=-4.55cm},
+   ytick style={yshift=-4.55cm}
+]
+
+\addlegendentry{$E_{LHCP}^{Meas}$};
+\addlegendentry{$E_{RHCP}^{Meas}$};
+
+\addplot [color=red,  thick , dashed,  mark=o, mark size=2,  mark repeat=2, every mark/.append style={solid}] table [col sep=comma, y=theta] {gain.csv};
+\addplot [color=blue, ultra thick , mark=diamond,  mark repeat=2] table [col sep=comma, y=phi] {gain.csv};
+\end{polaraxis}
+\end{tikzpicture}
+\end{document}
